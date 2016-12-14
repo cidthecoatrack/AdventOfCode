@@ -1,43 +1,42 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Linq;
 
 namespace AdventOfCode.Day2
 {
     public class BathroomCodeParser
     {
-        public int ParseBathroomCode(string input)
+        public string ParseBathroomCode(string input)
         {
             var keypad = new[]
             {
-                new[] { 1, 2, 3 },
-                new[] { 4, 5, 6 },
-                new[] { 7, 8, 9 },
+                new[] { "", "", "", "", "" },
+                new[] { "", "1", "2", "3", "" },
+                new[] { "", "4", "5", "6", "" },
+                new[] { "", "7", "8", "9", "" },
+                new[] { "", "", "", "", "" },
             };
 
+            var start = new Point(2, 2);
+            var code = GetCode(keypad, start, input);
+
+            return code;
+        }
+
+        private string GetCode(string[][] keypad, Point startingPosition, string input)
+        {
             var code = string.Empty;
-            var position = new Point(1, 1);
-            var instructions = input.Split('\n', '\r');
+            var position = new Point(startingPosition.X, startingPosition.Y);
+            var instructions = input.Split('\n', '\r').Where(i => !string.IsNullOrWhiteSpace(i));
 
             foreach (var instruction in instructions)
             {
                 foreach (var direction in instruction)
-                {
-                    switch (direction)
-                    {
-                        case 'U': position.Y = Math.Max(position.Y - 1, 0); break;
-                        case 'L': position.X = Math.Max(position.X - 1, 0); break;
-                        case 'D': position.Y = Math.Min(position.Y + 1, 2); break;
-                        case 'R': position.X = Math.Min(position.X + 1, 2); break;
-                        default: throw new Exception("dum dum messed up");
-                    }
-                }
+                    position = GetNewPosition(position, direction, keypad);
 
-                if (instruction.Any())
-                    code += keypad[position.Y][position.X].ToString();
+                code += keypad[position.Y][position.X];
             }
 
-            return Convert.ToInt32(code);
+            return code;
         }
 
         public string ParseFancyBathroomCode(string input)
@@ -53,25 +52,13 @@ namespace AdventOfCode.Day2
                 new[] { "", "", "", "", "", "", "" },
             };
 
-            var code = string.Empty;
-            var position = new Point(1, 3);
-            var instructions = input.Split('\n', '\r');
-
-            foreach (var instruction in instructions)
-            {
-                foreach (var direction in instruction)
-                {
-                    position = GetNewFancyPosition(position, direction, keypad);
-                }
-
-                if (instruction.Any())
-                    code += keypad[position.Y][position.X];
-            }
+            var start = new Point(1, 3);
+            var code = GetCode(keypad, start, input);
 
             return code;
         }
 
-        private Point GetNewFancyPosition(Point position, char direction, string[][] keypad)
+        private Point GetNewPosition(Point position, char direction, string[][] keypad)
         {
             var newPoint = new Point(position.X, position.Y);
 

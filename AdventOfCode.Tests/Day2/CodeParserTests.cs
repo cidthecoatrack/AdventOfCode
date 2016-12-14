@@ -17,8 +17,8 @@ namespace AdventOfCode.Tests.Day2
         [TestCase(@"ULL
 RRDDD
 LURDL
-UUUUD", 1985)]
-        public void VerifyBathroomCode(string input, int code)
+UUUUD", "1985")]
+        public void VerifyBathroomCode(string input, string code)
         {
             var bathroomCode = codeParser.ParseBathroomCode(input);
             Assert.That(bathroomCode, Is.EqualTo(code));
