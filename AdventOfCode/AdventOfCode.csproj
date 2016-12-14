@@ -44,6 +44,7 @@
     <Compile Include="Day1\DistanceParser.cs" />
     <Compile Include="Day2\BathroomCodeParser.cs" />
     <Compile Include="Day3\TriangleValidator.cs" />
+    <Compile Include="Day4\RoomDecryptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
