@@ -51,6 +51,7 @@
     <Compile Include="Day4\RoomDecryptorTests.cs" />
     <Compile Include="Day5\PasswordDecryptorTests.cs" />
     <Compile Include="Day6\MessageDescramblerTests.cs" />
+    <Compile Include="Day7\AddressEvaluatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
