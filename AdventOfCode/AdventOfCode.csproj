@@ -47,6 +47,7 @@
     <Compile Include="Day3\TriangleValidator.cs" />
     <Compile Include="Day4\RoomDecryptor.cs" />
     <Compile Include="Day5\PasswordDecryptor.cs" />
+    <Compile Include="Day6\MessageDescrambler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
