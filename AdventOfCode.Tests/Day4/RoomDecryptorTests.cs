@@ -1014,7 +1014,7 @@ namespace AdventOfCode.Tests.Day4
         }
 
         [Test]
-        public void GetTotalOfSectorIDs()
+        public void DAY_4_1()
         {
             var names = GetInputs();
 
@@ -1049,7 +1049,7 @@ namespace AdventOfCode.Tests.Day4
         }
 
         [Test]
-        public void GetDecryptedRoomNamesSectorIDs()
+        public void DAY_4_2()
         {
             var names = GetInputs();
 

@@ -2034,7 +2034,7 @@ namespace AdventOfCode.Tests.Day3
         }
 
         [Test]
-        public void GetValidCount()
+        public void DAY_3_1()
         {
             var triangles = GetInputs();
             var validities = triangles.Select(t => validator.IsValid(t));
@@ -2067,7 +2067,7 @@ namespace AdventOfCode.Tests.Day3
         }
 
         [Test]
-        public void GetColumnValidCount()
+        public void DAY_3_2()
         {
             var triangles = GetInputs();
             triangles = validator.TransformTrianglesFromColumns(triangles);
