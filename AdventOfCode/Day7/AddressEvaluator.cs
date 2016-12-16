@@ -51,13 +51,17 @@ namespace AdventOfCode.Day7
         private IEnumerable<string> GetABAs(string address)
         {
             var trimmedAddress = hypernetRegex.Replace(address, "-");
-            var matches = abaRegex.Matches(trimmedAddress);
+            var sections = trimmedAddress.Split('-');
             var abas = new List<string>();
 
-            foreach (Match match in matches)
+            foreach (var section in sections)
             {
-                if (match.Value[0] == match.Value[2] && match.Value[0] != match.Value[1])
-                    abas.Add(match.Value);
+                for (var i = 0; i + 3 <= section.Length; i++)
+                {
+                    var candidate = section.Substring(i, 3);
+                    if (candidate[0] == candidate[2] && candidate[0] != candidate[1])
+                        abas.Add(candidate);
+                }
             }
 
             return abas;
@@ -69,11 +73,11 @@ namespace AdventOfCode.Day7
 
             foreach (Match sequence in hypernetSequences)
             {
-                var matches = abaRegex.Matches(sequence.Value);
-
-                foreach (Match match in matches)
+                //INFO: skipping first and last character, as they are [ and ] respectively
+                for (var i = 1; i + 4 <= sequence.Value.Length; i++)
                 {
-                    if (match.Value[0] == aba[1] && match.Value[1] == aba[0])
+                    var candidate = sequence.Value.Substring(i, 3);
+                    if (candidate[0] == candidate[2] && candidate[0] != candidate[1] && aba[0] == candidate[1] && aba[1] == candidate[0])
                         return true;
                 }
             }

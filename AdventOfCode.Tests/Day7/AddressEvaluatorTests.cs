@@ -2071,6 +2071,7 @@ bwzsacxgqkbjycgfw[dbnligvrmqscasutn]rbgybqqsgjvlonkut";
         [TestCase("aaa[kek]eke", true)]
         [TestCase("zazbz[bzb]cdb", true)]
         [TestCase("zaza[zaz]cdb", true)]
+        [TestCase("zaz[zaza]cdb", true)]
         public void AddressSupportsSSL(string address, bool shouldSupportSSL)
         {
             var supportsSSL = addressEvaluator.AllowsSSL(address);
