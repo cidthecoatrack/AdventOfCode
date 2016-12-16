@@ -52,6 +52,7 @@
     <Compile Include="Day5\PasswordDecryptorTests.cs" />
     <Compile Include="Day6\MessageDescramblerTests.cs" />
     <Compile Include="Day7\AddressEvaluatorTests.cs" />
+    <Compile Include="Day8\TinyDisplayTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

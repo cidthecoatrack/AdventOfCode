@@ -2064,7 +2064,6 @@ bwzsacxgqkbjycgfw[dbnligvrmqscasutn]rbgybqqsgjvlonkut";
         [TestCase("aaaa[qwer]tyui", false)]
         [TestCase("ioxxoj[asdfgh]zxcvbn", false)]
         [TestCase("ioxxoj[asdfgh]zxcettevbn[adfbsrndabsd]vpoowunbopin", false)]
-        [TestCase("ioxxoj[asdfgh]zxcettevbn[adfbsrndabsd]vpoowunbopin[dfhsgbnskwwkfthrt]erlhakf", false)]
         [TestCase("ioxxj[asdfgh]zxcttevbn[adfbsrndabsd]nboowunbopin[dfhsgbnswkfthrt]erlhakf", false)]
         [TestCase("aba[bab]xyz", true)]
         [TestCase("xyx[xyx]xyx", false)]

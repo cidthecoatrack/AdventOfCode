@@ -49,6 +49,11 @@
     <Compile Include="Day5\PasswordDecryptor.cs" />
     <Compile Include="Day6\MessageDescrambler.cs" />
     <Compile Include="Day7\AddressEvaluator.cs" />
+    <Compile Include="Day8\ICommand.cs" />
+    <Compile Include="Day8\RectCommand.cs" />
+    <Compile Include="Day8\RotateColumnCommand.cs" />
+    <Compile Include="Day8\RotateRowCommand.cs" />
+    <Compile Include="Day8\TinyDisplay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
