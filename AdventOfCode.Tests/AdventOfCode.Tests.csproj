@@ -53,6 +53,7 @@
     <Compile Include="Day6\MessageDescramblerTests.cs" />
     <Compile Include="Day7\AddressEvaluatorTests.cs" />
     <Compile Include="Day8\TinyDisplayTests.cs" />
+    <Compile Include="Day9\DecompressorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

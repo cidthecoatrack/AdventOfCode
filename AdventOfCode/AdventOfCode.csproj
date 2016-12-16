@@ -54,6 +54,7 @@
     <Compile Include="Day8\RotateColumnCommand.cs" />
     <Compile Include="Day8\RotateRowCommand.cs" />
     <Compile Include="Day8\TinyDisplay.cs" />
+    <Compile Include="Day9\Decompressor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
