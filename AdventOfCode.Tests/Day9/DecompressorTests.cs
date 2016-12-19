@@ -20,11 +20,16 @@ namespace AdventOfCode.Tests.Day9
         [TestCase("A(2x2)BCD(2x2)EFG", 11)]
         [TestCase("(6x1)(1x3)A", 6)]
         [TestCase("X(8x2)(3x3)ABCY", 18)]
-        [TestCase("X(8x2)(3x3)ABCYDFSGDBSG(14x3)(2x1)(0x0)QWERTYUIOPLKJHFSGNSBSGGFBFGBFGB", 95)]
-        public void DecompressedLength(string compressed, int length)
+        [TestCase("X(8x1)(3x3)ABCY", 10)]
+        [TestCase("X(8x2)(3x3)ABCYDFSGDBSG(14x3)(2x1)(0x0)QWERTYUIOPLKJHFSGNSBSGGFBFGBFGB", 1 + 8 * 2 + 9 + 14 * 3 + 27)]
+        [TestCase("X(8x2)ABC(3x3)(14x3)(2x1)QWERTYUIO", 1 + 8 * 2 + 14 * 3)]
+        [TestCase("X(8x2)ABC(8x2)ABC", 1 + 8 * 2 + 3)]
+        [TestCase("ORNXNQJQ(151x7)(5x9)OFIXU(27x3)(21x9)VDCYQELDJQUAFZUHFZVSU(34x15)(12x10)SEDIUUVFPEKY(3x9)NHR(1x11)I(15x6)(9x13)CMNDUYGYR(40x6)(4x7)RMNG(25x8)XPDSEYNCWFQFAKUMITWMBLMIK(7x11)(1x10)N(25x1)(101x15)(28x15)DYKYFCKDLF",
+            8 + 151 * 7 + 7 * 11 + 25 * 1)]
+        public void Decompressed(string compressed, int length)
         {
             var decompressed = decompressor.Decompress(compressed);
-            Assert.That(decompressed.Length, Is.EqualTo(length));
+            Assert.That(decompressed.Length, Is.EqualTo(length), decompressed);
         }
 
         private string GetInput()
@@ -37,9 +42,51 @@ namespace AdventOfCode.Tests.Day9
         {
             var input = GetInput();
             var decompressed = decompressor.Decompress(input);
-            Assert.That(decompressed.Length, Is.GreaterThan(input.Length));
-            Assert.That(decompressed.Length, Is.LessThan(128312));
+            Assert.That(decompressed.Length, Is.GreaterThan(input.Length), decompressed);
+            Assert.That(decompressed.Length, Is.LessThan(128312), decompressed);
             Assert.Pass($"Decompressed length is {decompressed.Length}");
+        }
+
+        [TestCase("ADVENT", 6)]
+        [TestCase("A(1x5)BC", 7)]
+        [TestCase("(3x3)XYZ", 9)]
+        [TestCase("A(2x2)BCD(2x2)EFG", 11)]
+        [TestCase("(6x1)(1x3)A", 3)]
+        [TestCase("X(8x2)(3x3)ABCY", 20)]
+        [TestCase("X(8x1)(3x3)ABCY", 11)]
+        [TestCase("(27x12)(20x12)(13x14)(7x10)(1x12)A", 241920)]
+        [TestCase("(25x3)(3x3)ABC(2x3)XY(5x2)PGRSTX(18x9)(3x2)TWO(5x7)SEVEN", 445)]
+        [TestCase("X(8x2)(3x3)ABCYDFSGDBSG(14x3)(2x1)(0x0)QWERTYUIOPLKJHFSGNSBSGGFBFGBFGB", 67)]
+        public void RecursiveDecompressed(string compressed, int length)
+        {
+            var decompressed = decompressor.RecursiveDecompress(compressed);
+            Assert.That(decompressed.Length, Is.EqualTo(length), decompressed);
+        }
+
+        [TestCase("ADVENT", 6)]
+        [TestCase("A(1x5)BC", 7)]
+        [TestCase("(3x3)XYZ", 9)]
+        [TestCase("A(2x2)BCD(2x2)EFG", 11)]
+        [TestCase("(6x1)(1x3)A", 3)]
+        [TestCase("X(8x2)(3x3)ABCY", 20)]
+        [TestCase("X(8x1)(3x3)ABCY", 11)]
+        [TestCase("(27x12)(20x12)(13x14)(7x10)(1x12)A", 241920)]
+        [TestCase("(25x3)(3x3)ABC(2x3)XY(5x2)PGRSTX(18x9)(3x2)TWO(5x7)SEVEN", 445)]
+        [TestCase("X(8x2)(3x3)ABCYDFSGDBSG(14x3)(2x1)QWERTYUIOPLKJHFSGNSBSGGFBFGBFGB", 77)]
+        public void RecursiveDecompressedLength(string compressed, int length)
+        {
+            var decompressedLength = decompressor.RecursiveDecompressLength(compressed);
+            Assert.That(decompressedLength, Is.EqualTo(length));
+        }
+
+        [Test]
+        public void DAY_9_2()
+        {
+            var input = GetInput();
+            var decompressedLength = decompressor.RecursiveDecompressLength(input);
+            Assert.That(decompressedLength, Is.GreaterThan(input.Length));
+            Assert.That(decompressedLength, Is.LessThan(long.MaxValue));
+            Assert.Pass($"Decompressed length is {decompressedLength}");
         }
     }
 }
